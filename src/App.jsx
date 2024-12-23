@@ -1,12 +1,10 @@
 import './App.css'
-// import {useSelector, useDispatch} from "react-redux";
-// import {useEffect, useState} from "react";
-// import {addCart} from "./features/CartSlice.js";
-import Card from "./components/Card.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {addCart} from "./features/CartSlice.js";
+import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
+import {addCart} from "./features/CartSlice.js";
+import Card from "./components/Card.jsx";
 import {getProducts} from "./features/ProductSlice.js";
+import Navbar from "./components/Navbar.jsx";
 
 // import {getProductDataThunk} from "./features/ProductSlice.js";
 
@@ -15,26 +13,27 @@ import {getProducts} from "./features/ProductSlice.js";
 
 function App() {
     const dispatch = useDispatch();
-    // const [products, getProducts] = useState([]);
-
+//     // const [products, getProducts] = useState([]);
+//
     const productData = useSelector(state=>state.production);
-    console.log("productData", productData);
-
-
-    // runs each time the application executes/runs
+//     console.log("productData", productData);
+//
+//
+//     // runs each time the application executes/runs
     useEffect(() => {
         dispatch(getProducts());
     },[])
-
-
-
+//
+//
+//
 const addToCart = (product) => {
   dispatch(addCart(product));
+  console.log("product", product);
 
 }
-
   return (
       <div>
+          <Navbar/>
           <div>
 
               {productData.loading && <p className={'flex items-center justify-center text-5xl text-green-500'}>Loading....</p>}
@@ -73,4 +72,4 @@ const addToCart = (product) => {
   )
 }
 
-export default App
+export default App;

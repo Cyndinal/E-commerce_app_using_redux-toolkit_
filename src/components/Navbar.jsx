@@ -1,21 +1,27 @@
-// import React from 'react';
-import {useDispatch} from "react-redux"
-import {addCart} from "../features/CartSlice.js";
+import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 function Navbar() {
-    const dispatch = useDispatch();
-    return (
-        <div className={'flex flex-row justify-center '}>
-            <div className="text-red-500 flex gap-5">
-                <a href={"/"}>Home</a>
+    const select = useSelector(state => state.cart)
 
-                <div className={'flex'}>
-                    <div><a  href={"/Cart"}>Cart</a></div>
-                    <div className={'bg-red-300 flex  relative rounded-full'}>{dispatch(addCart)}</div>
-                </div>
+    return (
+
+            <div className={'bg-dark-blue-500 flex align-center justify-center gap-y-5 '}>
+                <nav className="flex gap-x-5 m-10">
+
+                    <div><Link to={"/"}>Home</Link></div>
+
+                    <div className={'flex'}>
+                        <div><Link to={"/cart"}>Cart</Link>
+                            <div className={'bg-red-400 relative float-right rounded-full'}>{select && select.length}</div>
+                        </div>
+                    </div>
+
+                </nav>
+
+
             </div>
 
-        </div>
     );
 }
 
