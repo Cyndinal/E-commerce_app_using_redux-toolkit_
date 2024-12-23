@@ -40,7 +40,7 @@ export default productSlice.reducer;
 
 
 export const getProducts = createAsyncThunk('products/get',async()=>{
-    const data = await fetch("https://akestoreapi.com/products");
+    const data = await fetch("https://fakestoreapi.com/products");
     const result = data.json();
     return result;
 })

@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addCart} from "./features/CartSlice.js";
 import {useEffect} from "react";
 import {getProducts} from "./features/ProductSlice.js";
+
 // import {getProductDataThunk} from "./features/ProductSlice.js";
 
 
@@ -19,6 +20,8 @@ function App() {
     const productData = useSelector(state=>state.production);
     console.log("productData", productData);
 
+
+    // runs each time the application executes/runs
     useEffect(() => {
         dispatch(getProducts());
     },[])
